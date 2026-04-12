@@ -517,6 +517,20 @@ def render_dashboard():
         with st.session_state.lock:
             spot_now = {token: st.session_state.spot_prices.get(token) for token in active_spot_tokens}
 
+        # FALLBACK: wenn WebSocket in Cloud nicht liefert → REST Preise holen
+        if not any(spot_now.values()):
+            try:
+                symbols = [f"{t}USDT" for t in active_spot_tokens]
+                resp = requests.get("https://api.binance.com/api/v3/ticker/price", timeout=5)
+                data = resp.json()
+                price_map = {row["symbol"]: float(row["price"]) for row in data if "symbol" in row}
+                for t in active_spot_tokens:
+                    sym = f"{t}USDT"
+                    if sym in price_map:
+                        spot_now[t] = price_map[sym]
+            except Exception as e:
+                logging.warning(f"REST fallback failed: {e}")
+
         alpha_now = st.session_state.alpha.get_prices(active_alpha_tokens)
 
         # lightweight bootstrap so UI appears immediately
