@@ -525,6 +525,7 @@ def render_dashboard():
                 sym = f"{t}USDT"
                 resp = requests.get(
                     "https://api.binance.com/api/v3/ticker/price",
+                    headers={"User-Agent": "Mozilla/5.0"},
                     params={"symbol": sym},
                     timeout=5,
                 )
