@@ -425,12 +425,6 @@ st.markdown(
         width: 90px;
     }
     
-    /* Responsive fix: stack tables on smaller screens */
-    @media (max-width: 1200px) {
-        div[data-testid="stHorizontalBlock"] {
-            flex-direction: column !important;
-        }
-    }
     </style>
     """,
     unsafe_allow_html=True,
@@ -500,13 +494,12 @@ if APP_PASSWORD:
 st.markdown(f"<div class='title-main'>{APP_TITLE}</div>", unsafe_allow_html=True)
 
 status_placeholder = st.empty()
-col1, col2 = st.columns(2)
-with col1:
-    st.markdown("<div class='title-section'>Spot</div>", unsafe_allow_html=True)
-    spot_table_placeholder = st.empty()
-with col2:
-    st.markdown("<div class='title-section'>Alpha</div>", unsafe_allow_html=True)
-    alpha_table_placeholder = st.empty()
+
+st.markdown("<div class='title-section'>Spot</div>", unsafe_allow_html=True)
+spot_table_placeholder = st.empty()
+
+st.markdown("<div class='title-section'>Alpha</div>", unsafe_allow_html=True)
+alpha_table_placeholder = st.empty()
 
 footer_placeholder = st.empty()
 
