@@ -424,6 +424,13 @@ st.markdown(
         text-align: right;
         width: 90px;
     }
+    
+    /* Responsive fix: stack tables on smaller screens */
+    @media (max-width: 1200px) {
+        div[data-testid="stHorizontalBlock"] {
+            flex-direction: column !important;
+        }
+    }
     </style>
     """,
     unsafe_allow_html=True,
