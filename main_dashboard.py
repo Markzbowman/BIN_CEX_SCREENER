@@ -380,16 +380,16 @@ st.markdown(
         -webkit-overflow-scrolling: touch;
     }
     table.ticker-table {
-        width: 100%;
-        min-width: 640px;
+        width: auto;
+        min-width: 0;
         border-collapse: collapse;
-        font-size: 0.88rem;
+        font-size: 0.84rem;
         table-layout: auto;
         border: 1.2px solid #6b7280;
     }
     table.ticker-table th,
     table.ticker-table td {
-        padding: 0.35rem 0.5rem;
+        padding: 0.22rem 0.32rem;
         white-space: nowrap;
         border-right: 1.2px solid #6b7280;
         border-bottom: 1.2px solid #6b7280;
@@ -413,16 +413,16 @@ st.markdown(
     }
     table.ticker-table td.col-token {
         text-align: left;
-        width: 70px;
+        width: 72px;
     }
     table.ticker-table td.col-price {
         text-align: right;
-        width: 150px;
-        padding-right: 0.5rem;
+        width: 118px;
+        padding-right: 0.32rem;
     }
     table.ticker-table td.col-pct {
         text-align: right;
-        width: 90px;
+        width: 72px;
     }
     
     </style>
@@ -501,6 +501,7 @@ spot_table_placeholder = st.empty()
 st.markdown("<div class='title-section'>Alpha</div>", unsafe_allow_html=True)
 alpha_table_placeholder = st.empty()
 
+st.markdown("<div style='height:0.35rem;'></div>", unsafe_allow_html=True)
 footer_placeholder = st.empty()
 
 # ---------------------------------------------------------
